@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StockController;
-use App\Http\Controllers\BranchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +24,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('list', [StockController::class, 'index']);
 
-Route::post('list/branch', [BranchController::class, 'branch']);
-
 Route::get('list/add', [StockController::class, 'add']);
 Route::post('list/addCheck', [StockController::class, 'addCheck']);
 Route::get('list/addDone', [StockController::class, 'addDone']);
+
+Route::get('list/edit/{id}',[StockController::class, 'edit']);
+Route::post('list/editCheck/{id}',[StockController::class, 'editCheck']);
+Route::get('list/editDone/{id}',[StockController::class, 'editDone']);
+
 
