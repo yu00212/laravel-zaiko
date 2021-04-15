@@ -2,8 +2,6 @@
 
 @section('content')
 
-    <h1>在庫編集</h1>
-
     <form action="/list/editCheck/{{$stock->id}}" method="post">
     <table>
         @csrf

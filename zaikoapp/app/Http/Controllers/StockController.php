@@ -47,4 +47,40 @@ class StockController extends Controller
         return redirect('/list');
     }
 
+    public function edit(Request $request,$id)
+    {
+        $stock = Stock::find($id); //idによるレコード検索
+        return view('stock.edit', ['stock' => $stock]);
+    }
+
+    public function editCheck(ValidateRequest $request,$id)
+    {
+        $id = $request->id;
+        $purchase_date = $request->purchase_date;
+        $deadline = $request->deadline;
+        $name = $request->name;
+        $price = $request->price;
+        $number = $request->number;
+
+        $s = [
+            'id' => $id,
+            'purchase_date' => $purchase_date,
+            'deadline' => $deadline,
+            'name' => $name,
+            'price' => $price,
+            'number' => $number
+        ];
+
+        return view('stock.editCheck', ['s' => $s]);
+    }
+
+    public function editDone(Request $request,$id)
+    {
+        $stock = Stock::find($id); //idによるレコード検索
+        $form = $request->all(); //保管する値を用意
+        unset($form['_token']); //フォームに追加される非表示フィールド(テーブルにない)「_token」のみ削除しておく
+        $stock->fill($form)->save(); //インスタンスに値を設定して保存
+        return redirect('/list');
+    }
+
 }

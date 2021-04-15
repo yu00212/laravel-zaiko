@@ -2,11 +2,6 @@
 
 @section('title', '在庫編集')
 
-@section('menubar')
-    @parent
-    在庫編集ページ
-@endsection
-
 @section('content')
 
     <p>下記の内容で間違い無いですか？</p>
