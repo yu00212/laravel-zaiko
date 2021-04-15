@@ -34,4 +34,7 @@ Route::get('list/edit/{id}',[StockController::class, 'edit']);
 Route::post('list/editCheck/{id}',[StockController::class, 'editCheck']);
 Route::get('list/editDone/{id}',[StockController::class, 'editDone']);
 
+Route::get('list/delCheck/{id}', [StockController::class, 'delCheck']);
+Route::get('list/delDone/{id}',[StockController::class, 'delDone']);
+
 

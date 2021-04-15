@@ -68,7 +68,7 @@ class StockController extends Controller
         $price = $request->price;
         $number = $request->number;
 
-        $s = [
+        $stock = [
             'id' => $id,
             'purchase_date' => $purchase_date,
             'deadline' => $deadline,
@@ -77,7 +77,7 @@ class StockController extends Controller
             'number' => $number
         ];
 
-        return view('stock.editCheck', ['s' => $s]);
+        return view('stock.editCheck', ['stock' => $stock]);
     }
 
     public function editDone(Request $request,$id)
@@ -86,6 +86,18 @@ class StockController extends Controller
         $form = $request->all(); //保管する値を用意
         unset($form['_token']); //フォームに追加される非表示フィールド(テーブルにない)「_token」のみ削除しておく
         $stock->fill($form)->save(); //インスタンスに値を設定して保存
+        return redirect('/list');
+    }
+
+    public function delCheck(Request $request,$id)
+    {
+        $stock = Stock::find($id); //idによるレコード検索
+        return view('stock.delCheck', ['stock' => $stock]);
+    }
+
+    public function delDone(Request $request,$id)
+    {
+        Stock::find($id)->delete();
         return redirect('/list');
     }
 

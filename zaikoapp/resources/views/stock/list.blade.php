@@ -29,12 +29,7 @@
 
                 <td><a href="/list/show/{{$stock->id}}" class="btn btn-primary btn-sm">詳細</a></td>
                 <td><a href="/list/edit/{{$stock->id}}" class="btn btn-primary btn-sm">編集</a></td>
-                <td>
-                    <form method="post" action="/list/destroy/{{$stock->id}}">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <input type="submit" value="削除" class="btn btn-danger btn-sm btn-destroy">
-                    </form>
-                </td>
+                <td><a href="/list/delCheck/{{$stock->id}}" class="btn btn-primary btn-sm">削除</a></td>
             </tr>
         @endforeach
     </table>
