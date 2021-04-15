@@ -10,7 +10,7 @@ class StockController extends Controller
 {
     public function index(Request $request)
     {
-        $stocks = Stock::all();
+        $stocks = Stock::query()->simplePaginate(10);
         return view('stock.list', ['stocks' => $stocks]);
     }
 
@@ -44,7 +44,7 @@ class StockController extends Controller
         $form = $request->all(); //保管する値を用意
         unset($form['_token']); //フォームに追加される非表示フィールド(テーブルにない)「_token」のみ削除しておく
         $stock->fill($form)->save(); //インスタンスに値を設定して保存
-        return redirect('/list'); // routes/web.php Routeのlist(保存されてるデータ表示)
+        return redirect('/list');
     }
 
 }
