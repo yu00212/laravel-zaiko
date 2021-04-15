@@ -47,6 +47,12 @@ class StockController extends Controller
         return redirect('/list');
     }
 
+    public function show(Request $request,$id)
+    {
+        $stock = Stock::find($id);
+        return view('stock.show', ['stock' => $stock]);
+    }
+
     public function edit(Request $request,$id)
     {
         $stock = Stock::find($id); //idによるレコード検索
