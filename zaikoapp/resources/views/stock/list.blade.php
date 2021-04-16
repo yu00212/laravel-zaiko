@@ -6,6 +6,19 @@
 
     <div class="row">
         <div class="col-sm-12">
+            <form method="post" action="/list/search" class="form-inline" style="margin:20px;">
+            @csrf
+                <div class="form-group">
+                    <label>検索</label>
+                    <input type="text" name="search" class="form-control">
+                </div>
+                <input type="submit" value="検索" class="btn btn-info">
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
             <a href="/list/add" class="btn btn-primary" style="margin:20px;">在庫追加</a>
         </div>
     </div>
