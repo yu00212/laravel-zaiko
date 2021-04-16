@@ -14,6 +14,25 @@ class StockController extends Controller
         return view('stock.list', ['stocks' => $stocks]);
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('search');
+
+        if(!empty($keyword)) {
+            $stocks = Stock::where('name', 'like', "%{$keyword}%")->get();
+            $count = $stocks->count();
+            $param = ['keyword' => $keyword, 'stocks' => $stocks, 'count' => $count];
+            return view('stock.search', $param);
+        } elseif(empty($keyword)) {
+            $count = 0;
+            $keyword = '';
+            $err = 'キーワードが入力されていません。';
+            $param = ['keyword' => $keyword, 'err' => $err, 'count' => $count];
+            return view('stock.search', $param);
+        }
+
+    }
+
     public function add(Request $request)
     {
         return view('stock.add');
