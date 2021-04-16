@@ -13,12 +13,7 @@ class ValidateRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == 'list/addCheck')
-        {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 
     /**
