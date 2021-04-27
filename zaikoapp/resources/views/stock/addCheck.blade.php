@@ -20,6 +20,7 @@
     @endif
 
     <table border=2>
+        <tr><th>店名</th><td>{{$s['shop']}}</td></tr>
         <tr><th>購入日</th><td>{{$s['purchase_date']}}</td></tr>
         <tr><th>期限</th><td> {{$s['deadline']}}</td></tr>
         <tr><th>商品名</th><td>{{$s['name']}}</td></tr>
@@ -29,6 +30,7 @@
 
     <form action="/list/addDone">
         @csrf
+        <input type="hidden" name="shop" value="{{$s['shop']}}">
         <input type="hidden" name="purchase_date" value="{{$s['purchase_date']}}">
         <input type="hidden" name="deadline" value="{{$s['deadline']}}">
         <input type="hidden" name="name" value="{{$s['name']}}">
