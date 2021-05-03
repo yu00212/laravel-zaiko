@@ -1,48 +1,79 @@
-@extends('layouts.layout')
+<x-app-layout>
+@section('title', '在庫編集')
+    <x-slot name="header">
+        <h2 class="text-lg text-gray-800 leading-tight">
+            {{ __('在庫編集') }}
+        </h2>
+    </x-slot>
 
-@section('content')
-
-    <form action="/list/editCheck/{{$stock->id}}" method="post">
-    <table>
+    <div class="flex justify-center mt-12">
+        <form action="/list/editCheck/{{$stock->id}}" method="post" class="grid grid-cols-1 gap-6">
         @csrf
-        @error('purchase_date')
-            <tr><th>❗️</th>
-            <td>{{$message}}</td></tr>
-        @enderror
-        <tr><th>購入日</th><td><input type="date" name="purchase_date" value="{{$stock->purchase_date}}"></td></tr>
+            <label class="block">
+                <span class="text-gray-700">店名</span>
+                <input type="text" name="shop" value="{{$stock->shop}}"
+                class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
+                @error('shop')
+                <p>❗️<span class="text-red-500">{{$message}}</span</p>
+                @enderror
+            </label>
 
-        @error('deadline')
-            <tr><th>❗️</th>
-            <td>{{$message}}</td></tr>
-        @enderror
-        <tr><th>期限</th><td><input type="date" name="deadline" value="{{$stock->deadline}}"></td></tr>
+            <label class="block">
+                <span class="text-gray-700">購入日</span>
+                <input type="date" name="purchase_date" value="{{$stock->purchase_date}}"
+                class="block rounded-md border-gray-300 shadow-sm focus:border-purple-400 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
+                @error('purchase_date')
+                <p>❗️<span class="text-red-500">{{$message}}</span</p>
+                @enderror
+            </label>
 
-        @error('name')
-            <tr><th>❗️</th>
-            <td>{{$message}}</td></tr>
-        @enderror
-        <tr><th>商品名</th><td><input type="text" name="name" value="{{$stock->name}}"></td></tr>
+            <label class="block">
+                <span class="text-gray-700">期限</span>
+                <input type="date" name="deadline" value="{{$stock->deadline}}"
+                class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
+                @error('deadline')
+                <p>❗️<span class="text-red-500">{{$message}}</span></p>
+                @enderror
+            </label>
 
-        @error('price')
-            <tr><th>❗️</th>
-            <td>{{$message}}</td></tr>
-        @enderror
-        <tr><th>値段</th><td><input type="text" name="price" value="{{$stock->price}}"></td></tr>
+            <label class="block">
+                <span class="text-gray-700">商品名</span>
+                <input type="text" name="name" value="{{$stock->name}}"
+                class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
+                @error('name')
+                <p>❗️<span class="text-red-500">{{$message}}</span</p>
+                @enderror
+            </label>
 
-        @error('number')
-            <tr><th>❗️</th>
-            <td>{{$message}}</td></tr>
-        @enderror
-        <tr><th>在庫数</th><td><input type="number" name="number" value="{{$stock->number}}"></td></tr>
+            <label class="block">
+                <span class="text-gray-700">値段</span>
+                <input type="text" name="price" value="{{$stock->price}}"
+                class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
+                @error('price')
+                <p>❗️<span class="text-red-500">{{$message}}</span</p>
+                @enderror
+            </label>
 
-        <tr><th></th><td><input type="submit" value="登録"></td></tr>
-    </table>
-    </form>
+            <label class="block">
+                <span class="text-gray-700">数量</span>
+                <input type="number" name="number" value="{{$stock->number}}"
+                class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30"></input>
+                @error('number')
+                <p class="-mt-14">❗️<span class="text-red-500">{{$message}}</span</p>
+                @enderror
+            </label>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <a href="/list" class="btn btn-primary" style="margin:20px;">一覧に戻る</a>
-        </div>
+            <div class="flex justify-center">
+                <button class="w-28 py-2 border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 font-semibold rounded
+                                md:mt-6 md:w-32">編集</button>
+            </div>
+        </form>
     </div>
 
-@stop
+    <div class="mt-6 mb-12 flex justify-center">
+        <a href="/list"
+            class="py-2 px-4 border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 font-semibold hover:opacity-75 rounded
+                    md:w-32"> 一覧に戻る</a>
+    </div>
+
+</x-app-layout>
