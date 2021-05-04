@@ -1,59 +1,100 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫検索</title>
-</head>
-<body>
+<x-app-layout>
+@section('title', '在庫検索')
+    <x-slot name="header">
+        <h2 class="text-lg text-gray-800 leading-tight">
+            {{ __('在庫検索結果') }}
+        </h2>
+    </x-slot>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <form method="post" action="/list/search" class="form-inline" style="margin:20px;">
-            @csrf
-                <div class="form-group">
-                    <label>検索</label>
-                    <input type="text" name="search" class="form-control" value="{{$keyword}}">
-                </div>
-                <input type="submit" value="検索" class="btn btn-info">
-            </form>
-        </div>
+    <div class="flex justify-center mt-3 md:py-8 lg:py-10 xl:py-3 xl:mt-8">
+        <form method="post" action="/list/search" class="form-inline m-5">
+        @csrf
+            <input type="text" name="search" value="{{$keyword}}"
+                    class="bg-gray-100 hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300">
+            <button class="font-semibold border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 text-gray-700 hover:opacity-75 py-2 px-4 rounded">
+            検索
+            </button>
+        </form>
     </div>
 
-    @if (isset($err))
-        <p>{{$err}}</p>
-    @endif
+        @if (isset($err))
+        <div class="flex justify-center my-12">
+            <p>{{$err}}</p>
+        </div>
+        @endif
 
-    @if ($count === 0 && !isset($err))
-        <p>該当商品がありません。</p>
-    @elseif ($count > 0)
-        <p>{{$count}}件の該当商品がありました。</p>
-        <table border="2">
-            <tr>
-                <th>購入日</th>
-                <th>商品</th>
-                <th>値段</th>
-                <th>数量</th>
-                <th>消費期限</th>
-            </tr>
+        @if ($count === 0 && !isset($err))
+            <div class="flex justify-center my-12 md:my-12">
+                <p>該当商品がありません。</p>
+            </div>
+        @elseif ($count > 0)
+        <div class="flex justify-center my-3 lg:py-12 xl:py-12 xl:-mt-12">
+            <p>{{$count}}件の該当商品がありました。</p>
+        </div>
 
-            @foreach ($stocks as $stock)
-                <tr class = "item">
-                    <td>{{$stock->purchase_date}}</>
-                    <td>{{$stock->name}}</td>
-                    <td>¥{{$stock->price}}</td>
-                    <td>{{$stock->number}}</td>
-                    <td>{{$stock->deadline}}</td>
-                </tr>
-            @endforeach
-        </table>
-    @endif
+        <div class="max-h-screen flex items-center px-4  md:mt-3 lg:-mt-3 xl:-mt-12">
+        <div class='overflow-x-auto w-full'>
+            <table class='mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+                <thead class="border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200">
+                    <tr >
+                        <th class="font-semibold text-lg px-6 py-4 text-center">
+                            期限
+                        </th>
+                        <th class="font-semibold text-lg px-6 py-4 text-center">
+                            商品
+                        </th>
+                        <th class="font-semibold text-lg px-6 py-4 text-center">
+                            数量
+                        </th>
+                        <th class="font-semibold text-lg px-6 py-4">
 
-    <div class="row">
-        <div class="col-sm-12">
-            <a href="/list" class="btn btn-primary" style="margin:20px;">一覧に戻る</a>
+                        </th>
+                        <th class="font-semibold text-lg px-6 py-4">
+
+                        </th>
+                        <th class="font-semibold text-lg px-6 py-4">
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                @foreach ($stocks as $stock)
+                    <tr class="text-center">
+                        <td class="text-lg px-6 py-4r">
+                            <p class="space-x-3">
+                            {{$stock->deadline}}
+                            </p>
+                        </td>
+                        <td class="text-lg px-6 py-4">
+                            <p class="">
+                            {{$stock->name}}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="text-lg px-6 py-4">
+                            {{$stock->number}}
+                            </p>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                        <a href="/list/show/{{$stock->id}}" class="font-semibold text-lg border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200  text-gray-700 py-1 px-4 hover:opacity-75 rounded">詳細</a>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                        <a href="/list/edit/{{$stock->id}}" class="font-semibold text-lg border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 text-gray-700 py-1 px-4 hover:opacity-75 rounded">編集</a>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                        <a href="/list/delCheck/{{$stock->id}}" class="font-semibold text-lg border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 text-gray-700 py-1 px-4 hover:opacity-75 rounded">削除</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
+    @endif
 
-</body>
-</html>
+    <div class="flex justify-center py-12">
+        <a href="/list"
+            class="py-2 px-4 border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 font-semibold hover:opacity-75 rounded md:w-32">一覧に戻る</a>
+    </div>
+
+</x-app-layout>
