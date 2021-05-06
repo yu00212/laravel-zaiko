@@ -6,7 +6,11 @@
         </h2>
     </x-slot>
 
+<<<<<<< HEAD
         <div class="py-24 -mt-20 sm:flex justify-center md:py-32 lg:py-40 xl:-mt-24">
+=======
+        <div class="py-24 sm:flex justify-center lg:my-20 xl:my-1">
+>>>>>>> cafb650ab15da8a1a9fe59625ad555283214dda7
             <div class="flex justify-center">
                 <a href="/list/add"
                     class="font-semibold py-2 px-4 h-11 border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 text-gray-700 hover:opacity-75 rounded md:-mt-1">
@@ -26,9 +30,15 @@
             </div>
         </div>
 
+<<<<<<< HEAD
     <div class="max-h-screen flex items-center px-4 -mt-24 md:-mt-24 lg:-mt-32 xl:-mt-40">
         <div class='overflow-x-auto w-full'>
             <table class='mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+=======
+    <div class="min-h-screen flex items-center px-4 -mt-36 md:-mt-52 lg:-mt-96 xl:-mt-40">
+        <div class='overflow-x-auto w-full'>
+            <table class='my-36 mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+>>>>>>> cafb650ab15da8a1a9fe59625ad555283214dda7
                 <thead class="border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200">
                     <tr >
                         <th class="font-semibold text-lg px-6 py-4 text-center">
@@ -85,7 +95,11 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <div class="py-10 mx-auto max-w-4xl w-64 rounded-lg md:py-20 lg:py-32 xl:py-12">
+=======
+    <div class="-mt-32 mx-auto max-w-4xl w-64 rounded-lg sm:-mt-48 lg:-mt-80 xl:-mt-32">
+>>>>>>> cafb650ab15da8a1a9fe59625ad555283214dda7
         {{ $stocks->links() }}
     </div>
 </x-app-layout>
