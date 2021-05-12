@@ -70,7 +70,7 @@
         </form>
     </div>
 
-    <div class="flex justify-center py-3">
+    <div class="flex justify-center">
         <a href="/list"
             class="py-2 px-4 border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 font-semibold hover:opacity-75 rounded
                     md:w-32"> 一覧に戻る</a>
