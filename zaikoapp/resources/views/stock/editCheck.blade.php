@@ -11,78 +11,48 @@
         下記の内容で間違い無いですか？</p>
     </div>
 
-    @if (count($errors) > 0)
-    <div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
     <div class="flex justify-center mt-12">
         <form method="post" action="/list/editDone/{{$stock['id']}}" class="grid grid-cols-1 gap-6">
         @csrf
-            <label class="block">
+            <label class="block px-16">
                 <span class="text-gray-700">店名</span>
                 <input type="text" name="shop" value="{{$stock['shop']}}" readonly
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
-                @error('shop')
-                <p>❗️<span class="text-red-500">{{$message}}</span</p>
-                @enderror
             </label>
 
-            <label class="block">
+            <label class="block px-16">
                 <span class="text-gray-700">購入日</span>
                 <input type="date" name="purchase_date" value="{{$stock['purchase_date']}}" readonly
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-400 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
-                @error('purchase_date')
-                <p>❗️<span class="text-red-500">{{$message}}</span</p>
-                @enderror
             </label>
 
-            <label class="block">
+            <label class="block px-16">
                 <span class="text-gray-700">期限</span>
                 <input type="date" name="deadline" value="{{$stock['deadline']}}" readonly
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
-                @error('deadline')
-                <p>❗️<span class="text-red-500">{{$message}}</span></p>
-                @enderror
             </label>
 
-            <label class="block">
+            <label class="block px-16">
                 <span class="text-gray-700">商品名</span>
                 <input type="text" name="name" value="{{$stock['name']}}" readonly
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
-                @error('name')
-                <p>❗️<span class="text-red-500">{{$message}}</span</p>
-                @enderror
             </label>
 
-            <label class="block">
+            <label class="block px-16">
                 <span class="text-gray-700">値段</span>
                 <input type="text" name="price" value="{{$stock['price']}}" readonly
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
-                @error('price')
-                <p>❗️<span class="text-red-500">{{$message}}</span</p>
-                @enderror
             </label>
 
-            <label class="block">
+            <label class="bloc px-16">
                 <span class="text-gray-700">数量</span>
                 <input type="number" name="number" value="{{$stock['number']}}" readonly
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
-                @error('number')
-                <p class="-mt-14">❗️<span class="text-red-500">{{$message}}</span</p>
-                @enderror
             </label>
 
             <div class="flex justify-center">
                 <button class="w-28 py-2 border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 font-semibold rounded
-                                md:mt-6 md:w-32">
-                編集
-                </button>
+                                md:mt-6 md:w-32">編集</button>
             </div>
 
             <div class="mb-12 flex justify-center">
