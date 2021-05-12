@@ -6,11 +6,7 @@
         </h2>
     </x-slot>
 
-<<<<<<< HEAD
     <div class="flex justify-center mt-3 md:py-8 lg:py-10 xl:py-3 xl:mt-8">
-=======
-    <div class="flex justify-center mt-12">
->>>>>>> cafb650ab15da8a1a9fe59625ad555283214dda7
         <form method="post" action="/list/search" class="form-inline m-5">
         @csrf
             <input type="text" name="search" value="{{$keyword}}"
@@ -32,7 +28,6 @@
                 <p>該当商品がありません。</p>
             </div>
         @elseif ($count > 0)
-<<<<<<< HEAD
         <div class="flex justify-center my-3 lg:py-12 xl:py-12 xl:-mt-12">
             <p>{{$count}}件の該当商品がありました。</p>
         </div>
@@ -40,15 +35,6 @@
         <div class="max-h-screen flex items-center px-4  md:mt-3 lg:-mt-3 xl:-mt-12">
         <div class='overflow-x-auto w-full'>
             <table class='mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
-=======
-        <div class="flex justify-center my-3 md:-mb-1">
-            <p>{{$count}}件の該当商品がありました。</p>
-        </div>
-
-        <div class="min-h-screen flex items-center px-4 -mt-40 -mb-24 md:-mt-64 md:-mb-64">
-        <div class='overflow-x-auto w-full'>
-            <table class='my-36 mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
->>>>>>> cafb650ab15da8a1a9fe59625ad555283214dda7
                 <thead class="border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200">
                     <tr >
                         <th class="font-semibold text-lg px-6 py-4 text-center">
@@ -106,11 +92,7 @@
     </div>
     @endif
 
-<<<<<<< HEAD
     <div class="flex justify-center py-12">
-=======
-    <div class="flex justify-center">
->>>>>>> cafb650ab15da8a1a9fe59625ad555283214dda7
         <a href="/list"
             class="py-2 px-4 border-2 border-purple-500 bg-gradient-to-r from-purple-200 to-pink-200 font-semibold hover:opacity-75 rounded md:w-32">一覧に戻る</a>
     </div>
