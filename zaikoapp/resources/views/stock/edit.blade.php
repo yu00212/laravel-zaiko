@@ -14,7 +14,7 @@
                 <input type="text" name="shop" value="{{$stock->shop}}"
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
                 @error('shop')
-                <p class="text-red-500">{{$message}}</p>
+                <p class="text-red-500 text-sm">{{$message}}</p>
                 @enderror
             </label>
 
@@ -23,16 +23,16 @@
                 <input type="date" name="purchase_date" value="{{$stock->purchase_date}}"
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-400 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
                 @error('purchase_date')
-                <p class="text-red-500">{{$message}}</span</p>
+                <p class="text-red-500 text-sm">{{$message}}</span</p>
                 @enderror
             </label>
 
             <label class="block px-16">
                 <span class="text-gray-700">期限</span>
                 <input type="date" name="deadline" value="{{$stock->deadline}}"
-                class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
+                class=" block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
                 @error('deadline')
-                <p class="text-red-500">{{$message}}</p>
+                <p class="text-red-500 text-sm ">{{$message}}</p>
                 @enderror
             </label>
 
@@ -41,7 +41,7 @@
                 <input type="text" name="name" value="{{$stock->name}}"
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
                 @error('name')
-                <p class="text-red-500">{{$message}}</p>
+                <p class="text-red-500 text-sm">{{$message}}</p>
                 @enderror
             </label>
 
@@ -50,7 +50,7 @@
                 <input type="text" name="price" value="{{$stock->price}}"
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30">
                 @error('price')
-                <p class="text-red-500">{{$message}}</p>
+                <p class="text-red-500 text-sm">{{$message}}</p>
                 @enderror
             </label>
 
@@ -59,7 +59,7 @@
                 <input type="number" name="number" value="{{$stock->number}}"
                 class="block rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-30"></input>
                 @error('number')
-                <p class="-mt-14"class="text-red-500">{{$message}}</p>
+                <p class="text-red-500 text-sm">{{$message}}</p>
                 @enderror
             </label>
 
