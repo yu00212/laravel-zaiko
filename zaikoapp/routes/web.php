@@ -22,20 +22,20 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('list', [StockController::class, 'index']);
+Route::get('list', [StockController::class, 'index'])->name('home');
 
 Route::get('list/show/{id}', [StockController::class, 'show']);
 
 Route::get('list/add', [StockController::class, 'add']);
 Route::post('list/addCheck', [StockController::class, 'addCheck']);
-Route::get('list/addDone', [StockController::class, 'addDone']);
+Route::post('list/addDone', [StockController::class, 'addDone']);
 
 Route::get('list/edit/{id}',[StockController::class, 'edit']);
 Route::post('list/editCheck/{id}',[StockController::class, 'editCheck']);
-Route::get('list/editDone/{id}',[StockController::class, 'editDone']);
+Route::post('list/editDone/{id}',[StockController::class, 'editDone']);
 
 Route::get('list/delCheck/{id}', [StockController::class, 'delCheck']);
-Route::get('list/delDone/{id}',[StockController::class, 'delDone']);
+Route::post('list/delDone/{id}',[StockController::class, 'delDone']);
 
 Route::post('list/search', [StockController::class, 'search']);
 
