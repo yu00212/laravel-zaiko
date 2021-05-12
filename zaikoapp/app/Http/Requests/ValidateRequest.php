@@ -24,6 +24,7 @@ class ValidateRequest extends FormRequest
     public function rules()
     {
         return [
+            'shop' => 'required|string|min:1|max:50',
             'purchase_date' => 'required|date_format:Y-m-d',
             'deadline' => 'required|date_format:Y-m-d',
             'name' => 'required|string|min:1|max:50',
@@ -35,9 +36,12 @@ class ValidateRequest extends FormRequest
     public function messages()
     {
         return [
+            'shop.required' => '店名を1~50字以内で入力してください。' ,
+            'shop.min:1' => '店名を1~50字以内で入力してください。' ,
+            'shop.max:50' => '店名を1~50字以内で入力してください。' ,
             'purchase_date.required' => '購入日をカレンダーから選択してください。' ,
             'purchase_date.date_format:Y-m-d' => '購入日をカレンダーから選択してください。' ,
-            'deadline.required' => '消費・賞味期限をカレンダーから選択してください。' ,
+            'deadline.required' => '期限をカレンダーから選択してください。' ,
             'deadline.date_format:Y-m-d' => '消費・賞味期限をカレンダーから選択してください。' ,
             'name.required' => '名前を1~50字以内で入力してください。' ,
             'name.min:1' => '名前を1~50字以内で入力してください。' ,
