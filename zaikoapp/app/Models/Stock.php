@@ -9,6 +9,6 @@ class Stock extends Model
 {
     //use HasFactory;
 
-    protected $fillable = ['purchase_date','deadline','name','price','number'];
+    protected $fillable = ['shop','purchase_date','deadline','name','price','number'];
 
 }
