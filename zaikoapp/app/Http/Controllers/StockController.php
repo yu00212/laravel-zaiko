@@ -8,9 +8,13 @@ use App\Http\Requests\ValidateRequest;
 
 class StockController extends Controller
 {
+    public function __construct() { //  __construct クラスを追加
+        $this->middleware('auth'); // ログイン者のみ下記メソッドを実行可能に
+    }
+
     public function index(Request $request)
     {
-        $stocks = Stock::query()->simplePaginate(10);
+        $stocks = Stock::query()->simplePaginate(8);
         return view('stock.list', ['stocks' => $stocks]);
     }
 
@@ -30,7 +34,6 @@ class StockController extends Controller
             $param = ['keyword' => $keyword, 'err' => $err, 'count' => $count];
             return view('stock.search', $param);
         }
-
     }
 
     public function add(Request $request)
@@ -40,13 +43,15 @@ class StockController extends Controller
 
     public function addCheck(ValidateRequest $request)
     {
+        $shop = $request->shop;
         $purchase_date = $request->purchase_date;
         $deadline = $request->deadline;
         $name = $request->name;
         $price = $request->price;
         $number = $request->number;
 
-        $s = [
+        $stock = [
+            'shop' => $shop,
             'purchase_date' => $purchase_date,
             'deadline' => $deadline,
             'name' => $name,
@@ -54,7 +59,7 @@ class StockController extends Controller
             'number' => $number
         ];
 
-        return view('stock.addCheck', ['s' => $s]);
+        return view('stock.addCheck', ['stock' => $stock]);
     }
 
     public function addDone(Request $request)
@@ -81,6 +86,7 @@ class StockController extends Controller
     public function editCheck(ValidateRequest $request,$id)
     {
         $id = $request->id;
+        $shop = $request->shop;
         $purchase_date = $request->purchase_date;
         $deadline = $request->deadline;
         $name = $request->name;
@@ -89,6 +95,7 @@ class StockController extends Controller
 
         $stock = [
             'id' => $id,
+            'shop' => $shop,
             'purchase_date' => $purchase_date,
             'deadline' => $deadline,
             'name' => $name,
